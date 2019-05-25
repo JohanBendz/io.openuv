@@ -426,56 +426,56 @@
       "setable": false,
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
+    },
+    "safe_exposure_time_st2_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 2"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
+    },
+    "safe_exposure_time_st3_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 3"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
+    },
+    "safe_exposure_time_st4_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 4"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
+    },
+    "safe_exposure_time_st5_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 5"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
+    },
+    "safe_exposure_time_st6_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 6"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
     }
-  },
-  "safe_exposure_time_st2_cp":{
-    "type": "string",
-    "title": {
-      "en": "Safe exposure for skin type 2"
-    },
-    "getable": true,
-    "setable": false,
-    "uiComponent": "sensor",
-    "icon": "/assets/icons/st.svg"
-  },
-  "safe_exposure_time_st3_cp":{
-    "type": "string",
-    "title": {
-      "en": "Safe exposure for skin type 3"
-    },
-    "getable": true,
-    "setable": false,
-    "uiComponent": "sensor",
-    "icon": "/assets/icons/st.svg"
-  },
-  "safe_exposure_time_st4_cp":{
-    "type": "string",
-    "title": {
-      "en": "Safe exposure for skin type 4"
-    },
-    "getable": true,
-    "setable": false,
-    "uiComponent": "sensor",
-    "icon": "/assets/icons/st.svg"
-  },
-  "safe_exposure_time_st5_cp":{
-    "type": "string",
-    "title": {
-      "en": "Safe exposure for skin type 5"
-    },
-    "getable": true,
-    "setable": false,
-    "uiComponent": "sensor",
-    "icon": "/assets/icons/st.svg"
-  },
-  "safe_exposure_time_st6_cp":{
-    "type": "string",
-    "title": {
-      "en": "Safe exposure for skin type 6"
-    },
-    "getable": true,
-    "setable": false,
-    "uiComponent": "sensor",
-    "icon": "/assets/icons/st.svg"
   }
 }
