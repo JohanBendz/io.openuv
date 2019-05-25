@@ -1,0 +1,24 @@
+{
+  "id": "io.openuv",
+  "version": "0.0.1",
+  "compatibility": ">=2.0.0",
+  "sdk": 2,
+  "name": {
+    "en": "OpenUV"
+  },
+  "description": {
+    "en": "Provides Homey with UV index forecast"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Johan Bendz",
+    "email": "johan_bendz@hotmail.com"
+  }
+}
