@@ -9,10 +9,6 @@
   "description": {
     "en": "Provides Homey with UV index forecast"
   },
-  "category": [
-    "climate"
-  ],
-  "permissions": [],
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
@@ -20,5 +16,466 @@
   "author": {
     "name": "Johan Bendz",
     "email": "johan_bendz@hotmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Johan Bendz",
+        "email": "johan_bendz@hotmail.com"
+      }
+    ]
+  },
+  "category": [ "climate" ],
+  "brandColor": "#689eb8",
+  "permissions": [
+  "homey:manager:geolocation"
+  ],
+  "drivers": [
+    {
+      "id": "openuv",
+      "name": {
+        "en": "UV index forecast"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_uv_index_cp",
+        "uv_time_cp",
+        "measure_uv_max_cp",
+        "uv_max_time_cp",
+        "measure_ozone_cp",
+        "ozone_time_cp",
+        "safe_exposure_time_st1_cp",
+        "safe_exposure_time_st2_cp",
+        "safe_exposure_time_st3_cp",
+        "safe_exposure_time_st4_cp",
+        "safe_exposure_time_st5_cp",
+        "safe_exposure_time_st6_cp"
+      ],
+      "images": {
+        "large": "/drivers/openuv/assets/images/large.png",
+        "small": "/drivers/openuv/assets/images/small.png"
+      },
+      "pair": [{
+        "id": "list_devices",
+        "template": "list_devices",
+        "navigation": {
+          "next": "add_devices"
+        }
+      },
+      {
+        "id": "add_devices",
+        "template": "add_devices"
+      }],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "OpenUV settings"
+          },
+          "children": [
+            {
+            "id": "offset",
+            "type": "radio",
+            "label": {
+              "en": "Select forecast"
+            },
+            "value": "0",
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Now"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "1 hour"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "2 hours"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "3 hours"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "4 hours"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "5 hours"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "8 hours"
+                }
+              },
+              {
+                "id": "12",
+                "label": {
+                  "en": "12 hours"
+                }
+              },
+              {
+                "id": "18",
+                "label": {
+                  "en": "18 hours"
+                }
+              },
+              {
+                "id": "24",
+                "label": {
+                  "en": "24 hours"
+                }
+              },
+              {
+                "id": "30",
+                "label": {
+                  "en": "30 hours"
+                }
+              },
+              {
+                "id": "36",
+                "label": {
+                  "en": "36 hours"
+                }
+              }
+            ]
+            }]
+        }
+      ]
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "uvIndexChange",
+        "title": {
+            "en": "UV index change"
+        },
+        "tokens": [
+        {
+          "name": "measure_uv_index_cp",
+          "title": {
+            "en": "UV index"
+          }
+        }
+        ],
+        "args": [{
+					"name": "ChangedUVIndex",
+					"type": "device",
+					"filter": "driver_id=openuv"
+				}]
+      },
+      {
+        "id": "ozoneChange",
+        "title": {
+            "en": "Ozone level change"
+        },
+        "tokens": [
+        {
+          "name": "measure_ozone_cp",
+          "title": {
+            "en": "Ozone level"
+          }
+        }
+        ],
+        "args": [{
+					"name": "ChangedOzoneLevel",
+					"type": "device",
+					"filter": "driver_id=openuv"
+				}]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "measure_uv_index_cp",
+        "title": {
+          "en": "UV index !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "index",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "measure_uv_max_cp",
+        "title": {
+          "en": "Max UV index !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "index",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "measure_ozone_cp",
+        "title": {
+          "en": "Ozone level !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "du",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st1_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 1 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st2_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 2 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st3_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 3 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st4_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 4 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st5_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 5 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "safe_exposure_time_st6_cp",
+        "title": {
+          "en": "Safe Time for Skin Type 6 !{{is|isn't}} above"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=openuv"
+          },
+          {
+						"name": "minutes",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "measure_uv_index_cp":{
+      "type": "string",
+      "title": {
+        "en": "UV index"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/uv_index.svg"
+    },
+    "uv_time_cp":{
+      "type": "string",
+      "title": {
+        "en": "UV index time"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/uv_time.svg"
+    },
+    "measure_uv_max_cp":{
+      "type": "string",
+      "title": {
+        "en": "Max UV index"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/uv_max.svg"
+    },
+    "uv_max_time_cp":{
+      "type": "string",
+      "title": {
+        "en": "Max UV index time"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/uv_max_time.svg"
+    },
+    "measure_ozone_cp":{
+      "type": "string",
+      "title": {
+        "en": "Ozone level"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/ozone.svg"
+    },
+    "ozone_time_cp":{
+      "type": "string",
+      "title": {
+        "en": "Ozone level time"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/ozone_time.svg"
+    },
+    "safe_exposure_time_st1_cp":{
+      "type": "string",
+      "title": {
+        "en": "Safe exposure for skin type 1"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/icons/st.svg"
+    }
+  },
+  "safe_exposure_time_st2_cp":{
+    "type": "string",
+    "title": {
+      "en": "Safe exposure for skin type 2"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/icons/st.svg"
+  },
+  "safe_exposure_time_st3_cp":{
+    "type": "string",
+    "title": {
+      "en": "Safe exposure for skin type 3"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/icons/st.svg"
+  },
+  "safe_exposure_time_st4_cp":{
+    "type": "string",
+    "title": {
+      "en": "Safe exposure for skin type 4"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/icons/st.svg"
+  },
+  "safe_exposure_time_st5_cp":{
+    "type": "string",
+    "title": {
+      "en": "Safe exposure for skin type 5"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/icons/st.svg"
+  },
+  "safe_exposure_time_st6_cp":{
+    "type": "string",
+    "title": {
+      "en": "Safe exposure for skin type 6"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "/assets/icons/st.svg"
   }
 }

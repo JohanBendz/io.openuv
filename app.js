@@ -2,12 +2,12 @@
 
 const Homey = require('homey');
 
-class MyApp extends Homey.App {
+class OpenUV extends Homey.App {
 	
 	onInit() {
-		this.log('MyApp is running...');
+		this.log('OpenUV app successfully started');
 	}
 	
 }
 
-module.exports = MyApp;
+module.exports = OpenUV;
