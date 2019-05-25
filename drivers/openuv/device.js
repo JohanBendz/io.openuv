@@ -1,7 +1,7 @@
 'use strict';
 
-const Homey = require('./node_modules/homey');
-const fetch = require('./node_modules/node-fetch');
+const Homey = require('homey');
+const fetch = require('node-fetch');
 
 /* //Set Cron parameters
 const cronName = "openUVCronTask"
