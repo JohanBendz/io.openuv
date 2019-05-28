@@ -14,7 +14,8 @@ class OpenUVDriver extends Homey.Driver {
 			{ "name": "OpenUV",
 			  "data": {"id": guid()},
 			  "settings": {
-				  "offset": '0'
+				  "offset": '0',
+				  "xaccesstoken": "5ff05db31b3d6822b5174f7dd0ffe425"
 			  }
 			}
 		];

@@ -154,7 +154,15 @@
                 }
               }
             ]
-            }]
+            },
+            {
+            "id": "xaccesstoken",
+            "type": "text",
+            "label": {
+              "en": "OpenUV API Key: https://www.openuv.io"
+            }
+            }
+          ]
         }
       ]
     }
@@ -169,6 +177,7 @@
         "tokens": [
         {
           "name": "measure_uv_index_cp",
+          "type": "number",
           "title": {
             "en": "UV index"
           }
@@ -188,6 +197,7 @@
         "tokens": [
         {
           "name": "measure_ozone_cp",
+          "type": "number",
           "title": {
             "en": "Ozone level"
           }
@@ -358,12 +368,13 @@
   },
   "capabilities": {
     "measure_uv_index_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "UV index"
       },
       "getable": true,
       "setable": false,
+      "units": "(0-11+)",
       "uiComponent": "sensor",
       "icon": "/assets/icons/uv_index.svg"
     },
@@ -378,12 +389,13 @@
       "icon": "/assets/icons/uv_time.svg"
     },
     "measure_uv_max_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Max UV index"
       },
       "getable": true,
       "setable": false,
+      "units": "(0-11+)",
       "uiComponent": "sensor",
       "icon": "/assets/icons/uv_max.svg"
     },
@@ -398,12 +410,13 @@
       "icon": "/assets/icons/uv_max_time.svg"
     },
     "measure_ozone_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Ozone level"
       },
       "getable": true,
       "setable": false,
+      "units": "du",
       "uiComponent": "sensor",
       "icon": "/assets/icons/ozone.svg"
     },
@@ -418,62 +431,68 @@
       "icon": "/assets/icons/ozone_time.svg"
     },
     "safe_exposure_time_st1_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 1"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     },
     "safe_exposure_time_st2_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 2"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     },
     "safe_exposure_time_st3_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 3"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     },
     "safe_exposure_time_st4_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 4"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     },
     "safe_exposure_time_st5_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 5"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     },
     "safe_exposure_time_st6_cp":{
-      "type": "string",
+      "type": "number",
       "title": {
         "en": "Safe exposure for skin type 6"
       },
       "getable": true,
       "setable": false,
+      "units": "minutes",
       "uiComponent": "sensor",
       "icon": "/assets/icons/st.svg"
     }
