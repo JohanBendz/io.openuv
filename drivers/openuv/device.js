@@ -122,7 +122,7 @@ class OpenUVDevice extends Homey.Device {
         };
         
         if (changedKeysArr == 'xaccesstoken') {
-            this.log('Settings changed for OpenUV API Key from ' + oldSettingsObj.offset + ' to ' + newSettingsObj.offset) + '. Fetching UV data.';
+            this.log('Settings changed for OpenUV API Key from ' + oldSettingsObj.xaccesstoken + ' to ' + newSettingsObj.xaccesstoken) + '. Fetching UV data.';
             this.fetchUVData()
             .catch( err => {
                 this.error( err );
