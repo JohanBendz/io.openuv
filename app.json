@@ -1,6 +1,6 @@
 {
   "id": "io.openuv",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "compatibility": ">=2.0.0",
   "sdk": 2,
   "name": {
@@ -24,6 +24,9 @@
         "email": "johan_bendz@hotmail.com"
       }
     ]
+  },
+  "tags": {
+	  "en": [ "UV", "ultraviolet", "sun", "sunburn", "tan", "tanning", "openuv", "skin", "health", "safe" ]
   },
   "category": [ "climate" ],
   "brandColor": "#689eb8",
@@ -73,6 +76,17 @@
             "en": "OpenUV settings"
           },
           "children": [
+            {
+              "id": "xaccesstoken",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "OpenUV API Key: https://www.openuv.io"
+              },
+              "hint": {
+                "en": "An API key can be obtained at https://www.openuv.io."
+              }
+            },
             {
             "id": "offset",
             "type": "radio",
@@ -154,13 +168,6 @@
                 }
               }
             ]
-            },
-            {
-            "id": "xaccesstoken",
-            "type": "text",
-            "label": {
-              "en": "OpenUV API Key: https://www.openuv.io"
-            }
             }
           ]
         }

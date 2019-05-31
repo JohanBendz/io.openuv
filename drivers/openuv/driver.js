@@ -15,7 +15,7 @@ class OpenUVDriver extends Homey.Driver {
 			  "data": {"id": guid()},
 			  "settings": {
 				  "offset": '0',
-				  "xaccesstoken": "Get your API key at https://www.openuv.io"
+				  "xaccesstoken": ""
 			  }
 			}
 		];

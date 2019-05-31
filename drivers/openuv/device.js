@@ -111,24 +111,27 @@ class OpenUVDevice extends Homey.Device {
       
     }; // end onAdded
     
-    async onSettings(oldSettingsObj, newSettingsObj, changedKeysArr) {
-		if (changedKeysArr == 'offset') {
-			this.log('Settings changed for UV Index offset from ' + oldSettingsObj.offset + ' to ' + newSettingsObj.offset) + '. Fetching UV data.';
+    async onSettings(oldSettings, newSettings, changedKeys) {
+        if (changedKeys && changedKeys.length) {
+
+            for (var i=0; i<changedKeys.length;i++){
+                
+                if (changedKeys[i] == 'offset') {
+                    this.log('Settings changed for UV Index offset from ' + oldSettings.offset + ' to ' + newSettings.offset) + '. Fetching UV data.';
+                };
+            
+                if (changedKeys[i] == 'xaccesstoken') {
+                    this.log('Settings changed for OpenUV API Key from ' + oldSettings.xaccesstoken + ' to ' + newSettings.xaccesstoken) + '. Fetching UV data.';
+                };
+            }
+            
+            console.log("fetching fresh data due to changed settings\n");
             this.fetchUVData()
             .catch( err => {
                 this.error( err );
             });
-        console.log("data fetched on settings\n");
-        };
-        
-        if (changedKeysArr == 'xaccesstoken') {
-            this.log('Settings changed for OpenUV API Key from ' + oldSettingsObj.xaccesstoken + ' to ' + newSettingsObj.xaccesstoken) + '. Fetching UV data.';
-            this.fetchUVData()
-            .catch( err => {
-                this.error( err );
-            });
-        console.log("data fetched on settings\n");
-		};
+
+        }
 
     }; // end onSettings
 
