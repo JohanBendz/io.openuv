@@ -23,18 +23,20 @@ class OpenUVDevice extends Homey.Device {
     onInit() {
         this.log('OpenUV device initiated');
 
+        var settings = this.getSettings();
+
 		//Register crontask
 		Homey.ManagerCron.getTask(cronName)
         .then(task => {
             this.log("This crontask is already registred: " + cronName);
-            task.on('run', () => this.fetchUVData());
+            task.on('run', () => this.fetchUVData(settings));
         })
         .catch(err => {
             if (err.code == 404) {
                 this.log("This crontask has not been registered yet, registering task: " + cronName);
                 Homey.ManagerCron.registerTask(cronName, cronInterval, null)
                 .then(task => {
-                    task.on('run', () => this.fetchUVData());
+                    task.on('run', () => this.fetchUVData(settings));
                 })
                 .catch(err => {
                     this.log(`problem with registering crontask: ${err.message}`);
@@ -102,7 +104,9 @@ class OpenUVDevice extends Homey.Device {
         let id = this.getData().id;
         this.log('device added: ', id);
 
-        this.fetchUVData()
+        var settings = this.getSettings();
+
+        this.fetchUVData(settings)
         .catch( err => {
 			this.error( err );
         });
@@ -126,7 +130,7 @@ class OpenUVDevice extends Homey.Device {
             }
             
             console.log("fetching fresh data due to changed settings\n");
-            this.fetchUVData()
+            this.fetchUVData(newSettings)
             .catch( err => {
                 this.error( err );
             });
@@ -135,12 +139,10 @@ class OpenUVDevice extends Homey.Device {
 
     }; // end onSettings
 
-    async fetchUVData() {
+    async fetchUVData(settings) {
 
         console.log("defining fetch data");
 
-        // get current settings
-		let settings = this.getSettings();
         let offset = parseInt(settings.offset);
         let xaccesstoken = settings.xaccesstoken;
         let device = this;
