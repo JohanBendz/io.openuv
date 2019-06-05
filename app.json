@@ -1,6 +1,6 @@
 {
   "id": "io.openuv",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "compatibility": ">=2.0.0",
   "sdk": 2,
   "name": {
@@ -168,6 +168,30 @@
                 }
               }
             ]
+            },
+            {
+              "id": "latitude",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "GEOlocation latitude"
+              }
+            },
+            {
+              "id": "longitude",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "GEOlocation longitude"
+              }
+            },
+            {
+              "id": "usehomeylocation",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "en": "Use Homey GEOlocation"
+              }
             }
           ]
         }

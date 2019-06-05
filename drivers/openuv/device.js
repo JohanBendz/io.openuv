@@ -121,12 +121,25 @@ class OpenUVDevice extends Homey.Device {
             for (var i=0; i<changedKeys.length;i++){
                 
                 if (changedKeys[i] == 'offset') {
-                    this.log('Settings changed for UV Index offset from ' + oldSettings.offset + ' to ' + newSettings.offset) + '. Fetching UV data.';
-                };
+                    this.log('Settings changed for UV Index offset from ' + oldSettings.offset + ' to ' + newSettings.offset);
+                }
             
                 if (changedKeys[i] == 'xaccesstoken') {
-                    this.log('Settings changed for OpenUV API Key from ' + oldSettings.xaccesstoken + ' to ' + newSettings.xaccesstoken) + '. Fetching UV data.';
-                };
+                    this.log('Settings changed for OpenUV API Key from ' + oldSettings.xaccesstoken + ' to ' + newSettings.xaccesstoken);
+                }
+
+                if (changedKeys[i] == 'latitude') {
+					this.log('Latitude changed from ' + oldSettings.latitude + ' to ' + newSettings.latitude);
+				}
+						
+				if (changedKeys[i] == 'longitude') {
+					this.log('Longitude changed from ' + oldSettings.longitude + ' to ' + newSettings.longitude);
+				}
+						
+				if (changedKeys[i] == 'usehomeylocation') {
+					this.log('Setting for use of Homey geolocation changed from ' + oldSettings.usehomeylocation + ' to ' + newSettings.usehomeylocation);
+                }
+                
             }
             
             console.log("fetching fresh data due to changed settings\n");
@@ -146,18 +159,25 @@ class OpenUVDevice extends Homey.Device {
         let offset = parseInt(settings.offset);
         let xaccesstoken = settings.xaccesstoken;
         let device = this;
-        
-        // defining variables
-        console.log("Collecting geolocation coordinates for this Homey");
-        const lat = (Homey.ManagerGeolocation.getLatitude()).toString().slice(0,9);
-        const lng = (Homey.ManagerGeolocation.getLongitude()).toString().slice(0,9);
-        console.log("latitude:",lat,", longitude:",lng,"\n");
-             
+        let url = "";
         let dt = new Date();
         dt.setHours( dt.getUTCHours() + offset );
-        let url = "https://api.openuv.io/api/v1/uv?lat="+lat+"&lng="+lng+"&dt="+dt;
-       
-        console.log(url);
+        
+        if (settings.usehomeylocation == false) {
+			// define full url if lat/long provided
+			console.log("Defining openUV API Url based on entered goelocation");
+            url = "https://api.openuv.io/api/v1/uv?lat="+settings.latitude+"&lng="+settings.longitude+"&dt="+dt;
+            console.log(url);
+		} else {
+			// define full url if lat/long is not provided
+			console.log("Collecting geolocation coordinates for this Homey");
+			const lat = (Homey.ManagerGeolocation.getLatitude()).toString().slice(0,9);
+			const lng = (Homey.ManagerGeolocation.getLongitude()).toString().slice(0,9);
+            console.log("Defining openUV API Url based on Homey goelocation");            
+            url = "https://api.openuv.io/api/v1/uv?lat="+lat+"&lng="+lng+"&dt="+dt;
+            console.log(url);
+		};
+        
         console.log("fetching data\n");
 
         let uvdata = await fetch(url, {

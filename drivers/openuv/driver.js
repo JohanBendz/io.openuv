@@ -15,7 +15,10 @@ class OpenUVDriver extends Homey.Driver {
 			  "data": {"id": guid()},
 			  "settings": {
 				  "offset": '0',
-				  "xaccesstoken": ""
+				  "xaccesstoken": "",
+				  "latitude": "",
+				  "longitude": "",
+				  "usehomeylocation": true
 			  }
 			}
 		];
