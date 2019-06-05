@@ -2,6 +2,8 @@
 
 Provides Homey with UV index forecast data
 
+### v 0.0.5
+* UTC Time correction
 ### v 0.0.4
 * Fix for Settings
 ### v 0.0.3

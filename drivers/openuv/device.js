@@ -154,7 +154,7 @@ class OpenUVDevice extends Homey.Device {
         console.log("latitude:",lat,", longitude:",lng,"\n");
              
         let dt = new Date();
-        dt.setHours( dt.getHours() + offset );
+        dt.setHours( dt.getUTCHours() + offset );
         let url = "https://api.openuv.io/api/v1/uv?lat="+lat+"&lng="+lng+"&dt="+dt;
        
         console.log(url);
