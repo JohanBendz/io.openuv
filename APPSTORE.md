@@ -6,6 +6,13 @@
 ## Included devices/features:
 * UV Index Forecast for today and tomorrow based on Homey geolocation.
 
+## Recommended UV Index categories for UV Index levels used in the app
+Low 0-3
+Moderate 3-6
+High 6-8
+Very High 8-11
+Extreme 11+
+
 ### UV Index Data
 <a href="https://github.com/JohanBendz/io.openuv">
   <img src="https://raw.githubusercontent.com/JohanBendz/io.openuv/beta/assets/images/small.png">
