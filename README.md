@@ -2,6 +2,10 @@
 
 Provides Homey with UV index forecast data
 
+### v 0.1.1
+* Stable version 0.1.0 released to appstore
+### v 0.1.0
+* Stable version released to appstore
 ### v 0.0.5
 * UTC Time correction
 ### v 0.0.4
